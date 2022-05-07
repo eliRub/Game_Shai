@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+// this is a winner class, if the user get a 100,000 points he is win.
 public class WinnerWindow extends JFrame {
 
         public WinnerWindow(){

@@ -3,6 +3,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+// this is a class that builds a car, it takes a picture, x, y, and frame.
 public class My_Image extends Component {
 
     private ImageIcon imageCar;

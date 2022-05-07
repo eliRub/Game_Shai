@@ -1,6 +1,6 @@
 package Game;
 
-import com.company.Window;
+//import com.company.Window;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -21,13 +21,13 @@ public class GameOver extends JFrame {
 
 
                 //It adds an image to the window
-                ImageIcon image = new ImageIcon("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\ProgrammingWorkshop\\src\\Game\\GameOver_Pic.png");
+                ImageIcon image = new ImageIcon("C:\\Users\\ELI\\IdeaProjects\\games\\Game_Shai\\gameOver.jpg");
                 JLabel label = new JLabel();
                 label.setBounds(75, 25, 350, 273);
                 label.setIcon(image);
                 this.add(label);
 
-                // to add points
+                // to add points and text of "play again"
                 JLabel label1 = new JLabel();
                 JLabel label2 = new JLabel();
 

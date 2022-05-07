@@ -4,9 +4,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+// this is the main class, where the road and the cars builds.
 public class GameScene extends JPanel {
     private  int points;
-
+    // here I   declare on the road.
     private Rectangles BOARD;
     private Rectangles ROAD_1;
     private Rectangles ROAD_2;
@@ -14,11 +15,13 @@ public class GameScene extends JPanel {
     private Rectangles FRAME_RIGHT;
     private Rectangles FRAME_LEFT;
 
+    //here I declare on the obstacles cars.
     private Frame[] frames;
     private Rectangles[] rectangles;
     private My_Image[] obstacles;
     private ImageIcon cars;
 
+    //here I declare on the user car.
     private Frame frame;
     private Rectangles rectangle;
     private My_Image imageCar;
@@ -37,15 +40,18 @@ public class GameScene extends JPanel {
         FRAME_RIGHT = new Rectangles(width-19, 0, 5, height, Color.green);
         FRAME_LEFT = new Rectangles(0, 0, 5, height, Color.green);
 
+        // It builds the user car.
         this.rectangle = new Rectangles(230, height-200, 80, 160, Color.darkGray);
         this.frame = new Frame(this.rectangle);
         this.image = new ImageIcon("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\ProgrammingWorkshop\\src\\Game\\MyCar.png");
         this.imageCar = new My_Image(image, 220, height-200, frame);
 
+        // It builds the obstacles cars.
         this.obstacles = new My_Image[300];
         this.frames = new Frame[300];
         this.rectangles = new Rectangles[300];
         Random random = new Random();
+        // here is where th first car will appear, on -250.
         int min = -250;
         int max = min + 80;
         for(int i = 0; i < this.obstacles.length; i++){
@@ -71,8 +77,11 @@ public class GameScene extends JPanel {
                 default:
                     X = 0;
             }
+            // in each new car that appears, its 'y' starts 250 pixels before the car in front of it,
+            // and it chooses randomly between minus 250 to plus 80 where to start.
             min -= 250;
             max = min + 80;
+            // here it chooses randomly, what photo will appear.
             ImageIcon randomCars;
             int x2 = random.nextInt(3);
             switch (x2){
@@ -98,6 +107,7 @@ public class GameScene extends JPanel {
          this.countPoints();
        }
 
+    // this is a pint function.
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         this.BOARD.paint(g);
@@ -119,6 +129,7 @@ public class GameScene extends JPanel {
         g.drawString(String.valueOf(points), 20, 50);
     }
 
+    // this is a thread that counts the points of the user.
     public void countPoints(){
        new Thread(()->{
           first:
@@ -142,6 +153,7 @@ public class GameScene extends JPanel {
        }).start();
     }
 
+    // this is a thread that responsible for the movements of the road.
     public void mainGameLoop(){
         new Thread(()->{
             PlayerMovement_IMAGE_CAR board = new PlayerMovement_IMAGE_CAR(this.BOARD, this.imageCar, this.frame, this.obstacles, this.frames);

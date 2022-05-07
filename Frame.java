@@ -2,6 +2,7 @@ package Game;
 
 import java.awt.*;
 
+// this is a class that builds a frame to all the cars.
 public class Frame {
 
     private Rectangles frame;
@@ -34,6 +35,7 @@ public class Frame {
         return this.frame.getY();
     }
 
+    // this is a check function that checks if one of the cars are collides with the user car.
     public boolean checkCollision(Frame other){
         boolean collision = false;
         if((this.frame.getX() <= other.getX()    &&

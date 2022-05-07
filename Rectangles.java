@@ -2,6 +2,7 @@
 
 import java.awt.*;
 
+// this is a rectangle class, with this I build the frame class.
 public class Rectangles {
 
     private int x;
