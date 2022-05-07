@@ -22,7 +22,7 @@ public class EntranceWindow extends JFrame {
 
 
         //It adds an image to the window
-        ImageIcon image = new ImageIcon("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\ProgrammingWorkshop\\src\\Game\\EntrancePic.png");
+        ImageIcon image = new ImageIcon("EntrancePic.png");
         JLabel label = new JLabel();
         label.setBounds(50, 0, 400, 300);
         label.setIcon(image);

@@ -7,6 +7,7 @@ import java.util.Random;
 // this is the main class, where the road and the cars builds.
 public class GameScene extends JPanel {
     private  int points;
+    private int pixel;
     // here I   declare on the road.
     private Rectangles BOARD;
     private Rectangles ROAD_1;
@@ -43,7 +44,7 @@ public class GameScene extends JPanel {
         // It builds the user car.
         this.rectangle = new Rectangles(230, height-200, 80, 160, Color.darkGray);
         this.frame = new Frame(this.rectangle);
-        this.image = new ImageIcon("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\ProgrammingWorkshop\\src\\Game\\MyCar.png");
+        this.image = new ImageIcon("MyCar.png");
         this.imageCar = new My_Image(image, 220, height-200, frame);
 
         // It builds the obstacles cars.
@@ -86,13 +87,13 @@ public class GameScene extends JPanel {
             int x2 = random.nextInt(3);
             switch (x2){
                 case 0:
-                    randomCars = new ImageIcon("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\ProgrammingWorkshop\\src\\Game\\cars.png");
+                    randomCars = new ImageIcon("cars.png");
                     break;
                 case 1:
-                    randomCars = new ImageIcon("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\ProgrammingWorkshop\\src\\Game\\cars2.png");
+                    randomCars = new ImageIcon("cars2.png");
                     break;
                 default:
-                    randomCars = new ImageIcon("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\ProgrammingWorkshop\\src\\Game\\car3.png");
+                    randomCars = new ImageIcon("car3.png");
                     break;
             }
             rectangles[i] = new Rectangles(X-3, Y, 90, 160, Color.darkGray);
@@ -144,7 +145,12 @@ public class GameScene extends JPanel {
                      }
                   }
                   Thread.sleep(50);
-                  points++;
+                  pixel ++;
+                  while(pixel == 35){
+                      points++;
+                      pixel=0;
+                  }
+
                   repaint();
               } catch (InterruptedException e) {
                   throw new RuntimeException(e);
@@ -167,7 +173,7 @@ public class GameScene extends JPanel {
                         if(this.frame.checkCollision(frames[i])){
                             this.rectangle =  new Rectangles(this.frame.getX(), this.frame.getY(), 160,80 , Color.gray);
                             this.frame = new Frame(this.rectangle);
-                            this.image = new ImageIcon("C:\\Users\\ELI\\Desktop\\coding and cyber\\java\\ProgrammingWorkshop\\src\\Game\\MyCarBroked.png");
+                            this.image = new ImageIcon("MyCarBroked.png");
                             this.imageCar = new My_Image(image, this.frame.getX() , this.frame.getY(), frame);
                             repaint();
 
