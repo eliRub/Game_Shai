@@ -52,7 +52,6 @@ public class PlayerMovement_IMAGE_CAR implements KeyListener {
                 }
                  break;
             case KeyEvent.VK_UP:
-                this.Board.moveDown();
                 for(int i = 0; i < this.obstacles.length; i++){
                     this.obstacles[i].moveCarsDown();
                     this.frames[i].moveDown();
