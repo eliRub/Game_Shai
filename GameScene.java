@@ -34,7 +34,7 @@ public class GameScene extends JPanel {
         this.setLayout(null);
 
         // It builds the road of the game
-        this.BOARD = new Rectangles(0, -130000, width, 130000+height, Color.darkGray);
+        this.BOARD = new Rectangles(0, 0, width, height, Color.darkGray);
         ROAD_1 = new Rectangles((width / 4), 0, 6, height, Color.white);
         ROAD_2 = new Rectangles((width / 2), 0, 6, height, Color.white);
         ROAD_3 = new Rectangles((width/4)*3, 0, 6, height, Color.white);
@@ -48,9 +48,9 @@ public class GameScene extends JPanel {
         this.imageCar = new My_Image(image, 220, height-200, frame);
 
         // It builds the obstacles cars.
-        this.obstacles = new My_Image[300];
-        this.frames = new Frame[300];
-        this.rectangles = new Rectangles[300];
+        this.obstacles = new My_Image[500];
+        this.frames = new Frame[500];
+        this.rectangles = new Rectangles[500];
         Random random = new Random();
         // here is where th first car will appear, on -250.
         int min = -250;
@@ -105,8 +105,7 @@ public class GameScene extends JPanel {
             );
         }
          this.mainGameLoop();
-         this.countPoints();
-       }
+        }
 
     // this is a pint function.
     protected void paintComponent(Graphics g) {
@@ -128,35 +127,6 @@ public class GameScene extends JPanel {
         g.setFont(new Font("Thoma", Font.PLAIN, 40));
         g.setColor(Color.RED);
         g.drawString(String.valueOf(points), 20, 50);
-    }
-
-    // this is a thread that counts the points of the user.
-    public void countPoints(){
-       new Thread(()->{
-          first:
-          while (true) {
-              try {
-                  if(this.points >= 100000){
-                      break first;
-                  }
-                  for(int i = 0; i < this.obstacles.length; i++){
-                     if(this.frame.checkCollision(frames[i])){
-                        break first;
-                     }
-                  }
-                  Thread.sleep(50);
-                  pixel ++;
-                  while(pixel == 35){
-                      points++;
-                      pixel=0;
-                  }
-
-                  repaint();
-              } catch (InterruptedException e) {
-                  throw new RuntimeException(e);
-              }
-          }
-       }).start();
     }
 
     // this is a thread that responsible for the movements of the road.
@@ -185,12 +155,12 @@ public class GameScene extends JPanel {
                             break first;
                         }
                     }
-                    this.BOARD.moveDown();
-                    for(int i = 0; i < this.obstacles.length; i++){
+                     for(int i = 0; i < this.obstacles.length; i++){
                         this.obstacles[i].moveCarsDown();
                         this.frames[i].moveDown();
                     }
                     Thread.sleep(5);
+                    points++;
                     repaint();
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
