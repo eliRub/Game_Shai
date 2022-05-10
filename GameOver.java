@@ -35,7 +35,7 @@ public class GameOver extends JFrame {
                 label1.setText("Your total points = " + point);
                 label1.setForeground(Color.RED);
                 label1.setFont(new Font("Toma", Font.PLAIN, 20));
-                label1.setBounds(150, 285, 200, 100);
+                label1.setBounds(140, 285, 300, 100);
                 this.add(label1);
 
                 // It adds a button to the window
@@ -43,7 +43,7 @@ public class GameOver extends JFrame {
                 label2.setText("Play Again");
                 label2.setFont(new Font("Arial", Font.PLAIN, 35));
                 button.add(label2);
-                button.setBounds(150, 357, 200, 100);
+                button.setBounds(140, 360, 200, 70);
                 // When you press the button
                 // [a] The Entrance Window is closed [b] It's open a Window Game
 
